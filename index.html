@@ -6,7 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Tailwind Css</title>
-    <link href="dist/output.css" rel="stylesheet">
+    <link href="dist/css/final.css" rel="stylesheet">
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 
 <body>
@@ -29,31 +36,46 @@
                     </button>
 
                     <nav id="nav-menu"
-                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                        class="hidden absolute py-5 bg-white dark:bg-dark lg:dark:bg-transparent dark:shadow-slate-500 shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
                             <li class="group">
                                 <a href="#home"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Beranda</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Beranda</a>
                             </li>
                             <li class="group">
                                 <a href="#about"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">About</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">About</a>
                             </li>
                             <li class="group">
                                 <a href="#portfolio"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Portfolio</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Portfolio</a>
                             </li>
                             <li class="group">
                                 <a href="#blog"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Blog</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Blog</a>
                             </li>
                             <li class="group">
                                 <a href="#clients"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Clients</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Clients</a>
                             </li>
                             <li class="group">
                                 <a href="#contact"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Contact</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Contact</a>
+                            </li>
+                            <li class="flex items-center pl-8 mt-3 lg:mt-0">
+                                <div class="flex">
+                                    <span class="mr-2 text-sm text-slate-500">Light</span>
+                                    <input type="checkbox" name="dark-toggle" hidden id="dark-toggle">
+                                    <label for="dark-toggle">
+                                        <div
+                                            class="flex h-5 w-9 cursor-pointer items-center rounded-full p-1 bg-slate-500">
+                                            <div
+                                                class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out">
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <span class="ml-2 text-sm text-slate-500">Dark</span>
+                                </div>
                             </li>
                         </ul>
                     </nav>
@@ -70,7 +92,7 @@
 
     <!-- Hero Section Start -->
 
-    <section id="home" class="pt-36">
+    <section id="home" class="pt-36 dark:bg-dark">
 
         <div class="container mx-auto lg:px-20">
 
@@ -79,10 +101,11 @@
                 <div class="w-full self-center px-4 lg:w-1/2">
 
                     <h1 class="text-base font-semibold text-primary md:text-xl">Halo semua ✊, saya
-                        <span class="block font-bold text-dark text-4xl mt-1 lg:text-5xl">Jang San</span>
+                        <span class="block font-bold text-dark text-4xl mt-1 lg:text-5xl dark:text-white">Jang
+                            San</span>
                     </h1>
                     <h2 class="font-medium text-slate-500 text-lg mb-5 lg:text-2xl">
-                        Content Creator | <span class="text-dark">Gamer</span>
+                        Content Creator | <span class="text-dark dark:text-white">Gamer</span>
                     </h2>
                     <p class="font-medium text-slate-500 mb-10 leading-relaxed">
                         Lorem ipsum dolor sit, amet consectetur adipisicing
@@ -100,8 +123,8 @@
                 <div class="w-full self-end px-4 lg:w-1/2">
 
                     <div class="mt-10 relative lg:mt-0 lg:right-0">
-                        <img src="dist/img/me.png" alt="Me" class="max-w-full mx-auto">
-                        <span class="absolute -bottom-0 -z-10 left-1/2 -translate-x-1/2 lg:scale-120">
+                        <img src="dist/img/me.png" alt="Me" class="max-w-full mx-auto relative z-10">
+                        <span class="absolute -bottom-0 left-1/2 -translate-x-1/2 lg:scale-120">
                             <svg width="420" height="420" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                                 <path fill="#14b8a6"
                                     d="M33.7,-33C49.3,-18.1,71.5,-9,74,2.5C76.4,13.9,59.1,27.9,43.5,43.8C27.9,59.8,13.9,77.7,-4,81.8C-22,85.8,-44,75.9,-59.2,60C-74.5,44,-82.8,22,-81.4,1.5C-79.9,-19.1,-68.5,-38.1,-53.3,-53.1C-38.1,-68.1,-19.1,-79,-5,-74C9,-69,18.1,-48,33.7,-33Z"
@@ -124,14 +147,15 @@
 
     <!-- About Section Start -->
 
-    <section id="about" class="pt-36 pb-32">
+    <section id="about" class="pt-36 pb-32 dark:bg-dark">
 
         <div class="container mx-auto lg:px-20">
             <div class="flex flex-wrap">
 
                 <div class="w-full px-4 mb-10 lg:w-1/2">
                     <h4 class="font-bold uppercase text-primary text-lg mb-4">About Me</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 max-w-md lg:text-4xl">Lorem ipsum dolor sit amet
+                    <h2 class="font-bold text-dark text-3xl mb-4 max-w-md lg:text-4xl dark:text-white">Lorem ipsum dolor
+                        sit amet
                         consectetur
                         adipisicing
                     </h2>
@@ -144,7 +168,8 @@
                 </div>
 
                 <div class="w-full px-4 lg:w-1/2">
-                    <h3 class="font-semibold text-dark text-2xl mb-4 lg:text-3xl lg:pt-10">Follow Me</h3>
+                    <h3 class="font-semibold text-dark text-2xl mb-4 lg:text-3xl lg:pt-10 dark:text-white">Follow Me
+                    </h3>
                     <p class="font-medium text-base text-slate-500 mb-6 lg:text-lg">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, optio libero repudiandae
                         quaerat tenetur odio aliquid enim magnam.
@@ -155,7 +180,7 @@
                         <!-- Youtube -->
 
                         <a href="https://youtube.com/sanushime17" target="_blank"
-                            class="rounded-full w-9 h-9 mr-3 flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white">
+                            class="rounded-full w-9 h-9 mr-3 flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white dark:text-white">
                             <svg width="20" role="img" class="fill-current" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <title>YouTube</title>
@@ -167,7 +192,7 @@
                         <!-- Instagram -->
 
                         <a href="https://instagram.com/sanushime17" target="_blank"
-                            class="rounded-full w-9 h-9 mr-3 flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white">
+                            class="rounded-full w-9 h-9 mr-3 flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white dark:text-white">
                             <svg width="20" role="img" class="fill-current" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <title>Instagram</title>
@@ -179,7 +204,7 @@
                         <!-- Linktree -->
 
                         <a href="https://linktr.ee/sanushime17" target="_blank"
-                            class="rounded-full w-9 h-9 mr-3 flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white">
+                            class="rounded-full w-9 h-9 mr-3 flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white dark:text-white">
                             <svg width="20" role="img" class="fill-current" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <title>Linktree</title>
@@ -204,7 +229,7 @@
 
     <!-- Portfolio Section Start -->
 
-    <section id="portfolio" class="pt-36 pb-16 bg-slate-100">
+    <section id="portfolio" class="pt-36 pb-16 bg-slate-100 dark:bg-slate-800">
 
         <div class="container mx-auto lg:px-20">
 
@@ -212,7 +237,7 @@
 
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Portfolio</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">New Facto</h2>
+                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">New Facto</h2>
                     <p class="font-medium text-md text-slate-500 md:text-lg">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus rem ducimus corporis ullam
                         provident nihil deserunt praesentium blanditiis officiis dicta!
@@ -228,7 +253,7 @@
                     <div class="rounded shadow-md overflow-hidden">
                         <img src="https://source.unsplash.com/600x300?city" alt="Landing Page" width="w-full">
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Jang San Landing Page</h3>
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Jang San Landing Page</h3>
                     <p class="font-medium text-base text-slate-500">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus rerum, eligendi ipsam fuga
                         labore illum, itaque odit tempore accusamus tenetur eaque ab facere esse iusto adipisci. Numquam
@@ -242,7 +267,7 @@
                     <div class="rounded shadow-md overflow-hidden">
                         <img src="https://source.unsplash.com/600x300?forest" alt="Landing Page" width="w-full">
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Jang San Landing Page</h3>
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Jang San Landing Page</h3>
                     <p class="font-medium text-base text-slate-500">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus rerum, eligendi ipsam fuga
                         labore illum, itaque odit tempore accusamus tenetur eaque ab facere esse iusto adipisci. Numquam
@@ -256,7 +281,7 @@
                     <div class="rounded shadow-md overflow-hidden">
                         <img src="https://source.unsplash.com/600x300?sky" alt="Landing Page" width="w-full">
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Jang San Landing Page</h3>
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Jang San Landing Page</h3>
                     <p class="font-medium text-base text-slate-500">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus rerum, eligendi ipsam fuga
                         labore illum, itaque odit tempore accusamus tenetur eaque ab facere esse iusto adipisci. Numquam
@@ -270,7 +295,7 @@
                     <div class="rounded shadow-md overflow-hidden">
                         <img src="https://source.unsplash.com/600x300?japan" alt="Landing Page" width="w-full">
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">Jang San Landing Page</h3>
+                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3 dark:text-white">Jang San Landing Page</h3>
                     <p class="font-medium text-base text-slate-500">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus rerum, eligendi ipsam fuga
                         labore illum, itaque odit tempore accusamus tenetur eaque ab facere esse iusto adipisci. Numquam
@@ -291,7 +316,7 @@
 
     <!-- Client Section Start -->
 
-    <section id="clients" class="pt-36 pb-16 bg-slate-800">
+    <section id="clients" class="pt-36 pb-16 bg-slate-800 dark:bg-slate-200">
 
         <div class="container mx-auto lg:px-20">
 
@@ -299,7 +324,7 @@
 
                 <div class="mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Clients</h4>
-                    <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">With Us</h2>
+                    <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-dark">With Us</h2>
                     <p class="font-medium text-md text-slate-500 md:text-lg">
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias nemo odio eius!
                     </p>
@@ -341,7 +366,7 @@
 
     <!-- Blog Section Start -->
 
-    <section id="blog" class="pt-36 pb-32 bg-slate-100">
+    <section id="blog" class="pt-36 pb-32 bg-slate-100 dark:bg-dark">
 
         <div class="container mx-auto lg:px-20">
 
@@ -349,7 +374,8 @@
 
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Blog</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">Letters Nami</h2>
+                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Letters Nami
+                    </h2>
                     <p class="font-medium text-md text-slate-500 md:text-lg">
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla dignissimos impedit corporis
                         repellendus!
@@ -362,11 +388,12 @@
 
                 <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
 
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
+                    <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg mb-10">
 
                         <img src="https://source.unsplash.com/600x300?crypto" alt="Blog Image" class="w-full">
                         <div class="py-8 px-6">
-                            <a href="#" class="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate">
+                            <a href="#"
+                                class="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate dark:text-white">
                                 <h3>Cryptocurrency</h3>
                             </a>
                             <p class="font-medium text-slate-500 text-base mb-6">Lorem ipsum dolor sit amet consectetur
@@ -381,11 +408,12 @@
 
                 <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
 
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
+                    <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg mb-10">
 
                         <img src="https://source.unsplash.com/600x300?evangelion" alt="Blog Image" class="w-full">
                         <div class="py-8 px-6">
-                            <a href="#" class="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate">
+                            <a href="#"
+                                class="block mb-3 font-semibold text-xl text-dark dark:text-white hover:text-primary truncate">
                                 <h3>Evangelion</h3>
                             </a>
                             <p class="font-medium text-slate-500 text-base mb-6">Lorem ipsum dolor sit amet consectetur
@@ -400,11 +428,12 @@
 
                 <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
 
-                    <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
+                    <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg mb-10">
 
                         <img src="https://source.unsplash.com/600x300?anime" alt="Blog Image" class="w-full">
                         <div class="py-8 px-6">
-                            <a href="#" class="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate">
+                            <a href="#"
+                                class="block mb-3 font-semibold text-xl text-dark dark:text-white hover:text-primary truncate">
                                 <h3>Cartoon</h3>
                             </a>
                             <p class="font-medium text-slate-500 text-base mb-6">
@@ -431,7 +460,7 @@
 
     <!-- Contact Section Start -->
 
-    <section id="contact" class="pt-36 pb-32">
+    <section id="contact" class="pt-36 pb-32 dark:bg-slate-800">
 
         <div class="container mx-auto lg:px-20">
 
@@ -439,7 +468,8 @@
 
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Contact</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl">Call Nami</h2>
+                    <h2 class="font-bold text-dark text-3xl mb-4 sm:text-4xl lg:text-5xl dark:text-white">Call Nami
+                    </h2>
                     <p class="font-medium text-md text-slate-500 md:text-lg">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa velit tempora alias accusamus
                         repellendus voluptas illum in?
@@ -619,6 +649,17 @@
     </footer>
 
     <!-- Footer End -->
+
+
+    <!-- Back to top Start -->
+
+    <a href="#home"
+        class="h-14 w-14 hidden justify-center items-center bg-primary rounded-full fixed z-[99999999999999] bottom-4 right-4 hover:animate-pulse"
+        id="totop">
+        <span class="h-5 w-5 border-t-2 border-l-2 rotate-45 mt-1"></span>
+    </a>
+
+    <!-- Back to top End -->
 
 
     <script src="dist/js/script.js"></script>
